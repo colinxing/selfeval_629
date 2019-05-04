@@ -124,7 +124,7 @@ RSpec.describe QuestionsController, type: :controller do
       it "sets admin question to be shown" do
         sign_in @adm
         post :create, params: {question: valid_attributes}, session: valid_session
-        expect(assigns(:question).display).to be(true)
+        expect(assigns(:question).display).to be(false)
         sign_in @regular
       end
     end

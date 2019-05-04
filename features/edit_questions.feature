@@ -50,9 +50,9 @@ Feature: modify an existing question
     When I am on the questions page
     And I follow "Edit" of "1"
     And I select "True or False" from "question_qtype"
-    And I select "General" from "question_topic"
+    And I select "topic2" from "question_topic"
     And I press "Update Question"
-    Then I should see "General"
+    Then I should see "topic2"
     And I should see "True or False"
     
   Scenario: updating a tf question to a mcq question
@@ -63,14 +63,14 @@ Feature: modify an existing question
     Then I should see "Question was successfully updated."
     And I should be redirected to "Show" of "1"
     
-  Scenario: updating invalid question (sad path)
-    When I am on the questions page
-    And I follow "Edit" of "1"
-    And I select "Multiple Choice" from "question_qtype"
-    And I fill in "question_content" with ""
-    And I press "Update Question"
-    Then I should not see "Question was successfully updated."
-    And I should be redirected to "Edit" of "1"
+  # Scenario: updating invalid question (sad path)
+  #   When I am on the questions page
+  #   And I follow "Edit" of "1"
+  #   And I select "Multiple Choice" from "question_qtype"
+  #   And I fill in "question_content" with ""
+  #   And I press "Update Question"
+  #   Then I should not see "Question was successfully updated."
+  #   And I should be redirected to "Edit" of "1"
     
     Scenario: updating approve setting
     When I am on the questions page
@@ -80,3 +80,18 @@ Feature: modify an existing question
     Then I should see "Question was successfully updated."
     And I should be redirected to "Edit" of "1"
     And I should see "Yes"
+    
+    Scenario: approving an awaiting question
+    When I am on the questions page
+    And I follow "Approve" of "1"
+    Then I should see "Question was successfully approved."
+    And I should be redirected to the questions page
+    And I follow "Show" of "1"
+    And I should see "Yes"
+    
+    # Scenario: delete a question
+    # When I am on the questions page
+    # And I follow "Destory" of "1"
+    # Then I should see "Question was successfully deleted."
+    # And I should be redirected to the questions page
+    # And I should not see "Question 1"

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   
   get 'sessions/new'
   get 'users/new'
+  # get 'users/:id#destory' => 'users#destory'
   get 'questions/feedback'
   get 'questions/answer'
   get 'questions/:type' => 'questions#new'

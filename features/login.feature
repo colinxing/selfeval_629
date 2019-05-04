@@ -12,18 +12,17 @@ Background: Users in a database
   Given the following users exist:
   | name        | email                   | created_at        | role        | password    |
   | Xien        | xthomas@test.com        | shieldedRavine    | admin       | xienpw123   |
-  | Edmaad      | edScrumMaster@test.com  | shovelWaterSpirit | user        | edmaadpw123 |
   | Alien       | iAmReal@test.com        | sugarStarWars     | user        | alienpw123  |
-  | George      | armyOfOne@test.com      | georgeOfTheJungle | user        | georgepw123 |
 
 Scenario: verify output when email id is entered
   Given I am on the home page
   Then I follow "Sign in"
-  And  I fill in "Email" with "edScrumMaster@test.com"
-  And  I fill in "Password" with "edmaadpw123"
+  And  I fill in "Email" with "iAmReal@test.com"
+  And  I fill in "Password" with "alienpw123"
   And  I press "Sign in"
   Then I should be on the homepage
   And I should see "Signed in successfully."
+  And I should see "You are logged in as Alien."
  
 Scenario: verify signup from login page
   Given I am on the home page
@@ -55,6 +54,45 @@ Scenario: admin sign in
   And I press "Sign in"
   Then I should be on the home page
   
+  # And I follow "Delete" user of "2"
+  # Then I should see "User deleted."
+  # And I should be on the home page
+  # And I should not see "iAmReal@test.com"
+  
+Scenario: admin chaning user's role
+  Given I am on the home page
+  Then I follow "Sign in"
+  And  I fill in "Password" with "xienpw123"
+  And  I fill in "Email" with "xthomas@test.com "
+  And I press "Sign in"
+  And I am on the home page
+  And I follow "Users"
+  And I am on the users page
+  And I select "Admin" from "user_role"
+  And I press "Change Role"
+  And I am on the users page
+  Then I follow "Sign out"
+  And I follow "Sign in"
+  And I fill in "Password" with "alienpw123"
+  And I fill in "Email" with "iAmReal@test.com"
+  And I press "Sign in"
+  And I am on the home page
+  And I should see "Users"
+  # Then I should see "User deleted."
+  # And I should be on the home page
+  # And I should not see "iAmReal@test.com"
+  
+Scenario: user log out
+  Given I am on the home page
+  Then I follow "Sign in"
+  And  I fill in "Password" with "xienpw123"
+  And  I fill in "Email" with "xthomas@test.com "
+  And I press "Sign in"
+  And I am on the home page
+  And I follow "Sign out"
+  And I am on the users page
+  And I should see "Sign in"
+  And I should see "Sign up now"
   
 Scenario: admin deleting users
   Given I am on the home page
@@ -65,9 +103,47 @@ Scenario: admin deleting users
   And I am on the home page
   And I follow "Users"
   And I am on the users page
-  And I follow "iamreal@test.com"
-  Then I should see "Name: Alien"
-  And I should see "Email: iamreal@test.com"
+  And I follow "Delete user"
+  And I am on the users page
+  And I should not see "iAmReal@test.com"
+  
+# Scenario: admin download database
+#   Given I am on the home page
+#   Then I follow "Sign in"
+#   And  I fill in "Password" with "xienpw123"
+#   And  I fill in "Email" with "xthomas@test.com "
+#   And I press "Sign in"
+#   And I am on the home page
+#   And I follow "Users"
+#   And I am on the users page
+#   And I follow "Download Database"
+#   And I should see "xthomas@test.com"
+  
+Scenario: user edit account name
+  Given I am on the home page
+  Then I follow "Sign in"
+  And  I fill in "Password" with "alienpw123"
+  And  I fill in "Email" with "iAmReal@test.com"
+  And I press "Sign in"
+  And I am on the home page
+  And I follow "Edit account"
+  And I fill in "user_name" with "Alien1"
+  And I press "Update"
+  And I am on the home page
+  And I should see "You are logged in as Alien"
+  
+Scenario: user edit account password validly
+  Given I am on the home page
+  Then I follow "Sign in"
+  And  I fill in "Password" with "alienpw123"
+  And  I fill in "Email" with "iAmReal@test.com"
+  And I press "Sign in"
+  And I am on the home page
+  And I follow "Edit account"
+  And I fill in "user_password" with "1234"
+  And I fill in "user_password_confirmation" with "1234"
+  And I press "Update"
+  And I should see "Password is too short (minimum is 6 characters)"
   
 # Scenario: add User to existing Database
 #   Given I am on the login page

@@ -12,6 +12,12 @@ Given /I am an admin/ do
     click_button 'Sign in'
 end
 
+When("I follow {string} user of {string}") do |string, string2|
+  if (string=="Delete") then
+      visit "/users/#{string2}", :destory
+  end
+end
+
 # When("I choose {string} for {string}") do |string, string2|
 #     choose(string2, option: string)
 # end

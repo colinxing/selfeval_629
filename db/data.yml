@@ -1,210 +1,5 @@
 
 ---
-ar_internal_metadata:
-  columns:
-  - key
-  - value
-  - created_at
-  - updated_at
-  records: 
-  - - environment
-    - development
-    - '2019-04-08 01:13:09.683604'
-    - '2019-04-08 01:13:09.683604'
-
----
-datafiles:
-  columns:
-  - id
-  - name
-  - attachment
-  - created_at
-  - updated_at
-  records: 
-  - - 1
-    - 
-    - data
-    - '2019-04-21 19:05:39.671443'
-    - '2019-04-21 19:05:39.671443'
-
----
-questions:
-  columns:
-  - id
-  - content
-  - option1
-  - option2
-  - option3
-  - option4
-  - answer
-  - qtype
-  - explanation
-  - image
-  - topic
-  - display
-  - feedback
-  - uid
-  - approved
-  records: 
-  - - 1
-    - What color is the sky?
-    - red
-    - green
-    - blue
-    - yellow
-    - option3
-    - Multiple Choice
-    - It is always blue unless you pollute it.
-    - 
-    - general
-    - true
-    - 
-    - 1
-    - 
-  - - 2
-    - What is \(\frac{1+2^2}{5}\)?
-    - '5'
-    - '1'
-    - "\\(\\frac{1}{3}\\)"
-    - '0'
-    - option2
-    - Multiple Choice
-    - A number divided by itself is 1.
-    - 
-    - Math
-    - true
-    - 
-    - 1
-    - 
-  - - 3
-    - For a binary search algorithm to work, it is necessary that the array (list)
-      must be
-    - popped out of a stack
-    - sorted
-    - unsorted
-    - in a heap
-    - option2
-    - Multiple Choice
-    - As binary search divides the list and selects a the sub-list to extend search
-      based on comparison of values, it becomes necessary that the array (list) must
-      be in sorted form.
-    - 
-    - General
-    - true
-    - 
-    - 1
-    - 
-  - - 4
-    - For a binary search algorithm to work, it is necessary that the array (list)
-      must be
-    - popped out of a stack
-    - sorted
-    - unsorted
-    - in a heap
-    - option2
-    - Multiple Choice
-    - The array(list) has to be sorted so you can use binary search
-    - 
-    - General
-    - true
-    - 
-    - 1
-    - 
-  - - 5
-    - Which one of the below mentioned is linear data structure
-    - Queue
-    - Stack
-    - Arrays
-    - All of the above
-    - option4
-    - Multiple Choice
-    - All mentioned data structures are linear in nature.
-    - 
-    - General
-    - true
-    - 
-    - 1
-    - 
-  - - 6
-    - Quick sort algorithm is an example of
-    - Greedy approach
-    - Improved binary search
-    - Dynamic Programming
-    - Divide and conquer
-    - option4
-    - Multiple Choice
-    - Quick sort divides the list using pivot and then sorts in recursive manner.
-      It uses divide and conquer approach.
-    - 
-    - General
-    - true
-    - 
-    - 1
-    - 
-  - - 7
-    - Access time of a binary search tree may go worse in terms of time complexity
-      upto
-    - O(n^2)
-    - O(nlogn)
-    - O(n)
-    - O(1)
-    - option3
-    - Multiple Choice
-    - If all n values in the tree are in the one side of this BST, its O(n)
-    - 
-    - General
-    - true
-    - 
-    - 1
-    - 
-  - - 8
-    - When does the ArrayIndexOutOfBoundsException occur?
-    - Compile-time
-    - Run-time
-    - Not an error
-    - None of the mentioned
-    - option2
-    - Multiple Choice
-    - ArrayIndexOutOfBoundsException is a run-time exception and the compilation is
-      error-free.
-    - 
-    - General
-    - true
-    - 
-    - 1
-    - 
-  - - 14
-    - asdasd
-    - 'True'
-    - 'False'
-    - nil
-    - nil
-    - option1
-    - True or False
-    - ''
-    - ID_photo.png
-    - General
-    - true
-    - 
-    - 1
-    - 
-  - - 17
-    - asdasdas
-    - 'True'
-    - 'False'
-    - nil
-    - nil
-    - option1
-    - True or False
-    - ''
-    - Untitled_Diagram__1_.png
-    - General
-    - true
-    - 
-    - 1
-    - 
-
----
 users:
   columns:
   - id
@@ -224,32 +19,32 @@ users:
   - role
   records: 
   - - 1
-    - user@example.com
-    - "$2a$11$hwEiLqvYK0iNnV5Es9D.6OcmlqA5/hF1y32/oeN47d4uDfRAKqk2m"
+    - xthomas@test.com
+    - "$2a$04$LRr7NPK7P2m1gf.kePf7Iuzp4O.dyhQw6pioAUQDW7tdE/xZQfzty"
     - 
     - 
     - 
-    - 5
-    - '2019-04-21 20:25:18.858529'
-    - '2019-04-09 23:46:11.078304'
-    - 165.91.13.39
-    - 165.91.12.123
-    - '2019-04-08 01:13:09.991491'
-    - '2019-04-21 20:25:18.860064'
-    - 
+    - 1
+    - '2019-05-04 22:18:00.438105'
+    - '2019-05-04 22:18:00.438105'
+    - 127.0.0.1
+    - 127.0.0.1
+    - '2019-05-04 22:18:00.386038'
+    - '2019-05-04 22:18:00.438625'
+    - Xien
     - 2
   - - 2
-    - wxy950113@gmail.com
-    - "$2a$11$QSYpZT/o7xxl0RWkDI/f/uINHwZ8II9JKUvSJpqkUU41tJG9cmLKq"
+    - iamreal@test.com
+    - "$2a$04$jCwRxAAHtYmkUYMoSt27hu4Ciitt.oWyrCmCHrIj9aMTGnXpfQHde"
     - 
     - 
     - 
-    - 2
-    - '2019-04-21 20:25:40.088293'
-    - '2019-04-08 01:51:54.112959'
-    - 165.91.13.39
-    - 47.218.235.2
-    - '2019-04-08 01:51:54.101289'
-    - '2019-04-21 20:25:40.089399'
-    - wxy950113@gmail.com
-    - 2
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - '2019-05-04 22:18:00.402828'
+    - '2019-05-04 22:18:00.402828'
+    - Alien
+    - 0
