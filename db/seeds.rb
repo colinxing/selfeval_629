@@ -27,7 +27,7 @@ puts user.role
 #   Character.create(name: 'Luke', movie: movies.first)
 
 questions = [{:qtype => 'Multiple Choice',
-              :topic => 'general' ,
+              :topic => 'General' ,
               :content => 'What color is the sky?',
               :option1 => 'red',
               :option2 => 'green',

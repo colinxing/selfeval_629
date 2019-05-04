@@ -1,5 +1,7 @@
 var elem = document.getElementById("question_qtype");
-elem.onchange = function myFunction(){console.log(elem.value)
+var elem1 = document.getElementById("question_topic");
+elem.onchange = function myFunction(){
+    console.log(elem.value);
     var hiddenDiv1 = document.getElementById("opt1");
     hiddenDiv1.style.display = (this.value == "True or False") ? "none":"block";
     var hiddenDiv2 = document.getElementById("opt2");
@@ -8,6 +10,7 @@ elem.onchange = function myFunction(){console.log(elem.value)
     hiddenDiv3.style.display = (this.value == "True or False") ? "none":"block";
     var hiddenDiv4 = document.getElementById("opt4");
     hiddenDiv4.style.display = (this.value == "True or False") ? "none":"block";
+
     var r1 = document.getElementsByClassName("radiobutton");
     for (var i = 2, length = r1.length; i < 4; i++)
     {
@@ -38,7 +41,16 @@ elem.onchange = function myFunction(){console.log(elem.value)
     }
     //console.log(r1)
 };
-
+elem1.onchange = function myFunction1(){
+//     console.log(elem.value)
+    var hiddenDiv6 = document.getElementById("newtopic");
+    hiddenDiv6.style.display = (this.value == "new topic") ? "block":"none";
+};
+// function myFunction1(){
+//     var elem1 = document.getElementById("question_topic");
+//     var hiddenDiv6 = document.getElementById("newtopic");
+//     hiddenDiv6.style.display = (elem1.value == "new topic") ? "block":"none";
+//   }
 //function myFunction() {
 //    var x1 = document.getElementById("opt1");
 //    if (x1.style.display === "none") {

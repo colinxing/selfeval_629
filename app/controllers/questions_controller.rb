@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
   def index
     # @questions = Question.all
     @user_id = current_user.id
+    
     # puts("user_id")
     # puts(@user_id)
     # @questions = Question.find{|question| question.uid == @user_id || question.uid == nil}
@@ -14,11 +15,15 @@ class QuestionsController < ApplicationController
     else
       @questions = Question.where(uid: @user_id)
     end
+    # @questions.each do |question|
+    #   puts question.image_url
+    # end
     # puts("questions count")
     # puts(@questions.size)
     # puts(@questions[1])
     # puts(@questions[0] == nil)
     # // if @questions[0] == nil render an empty page
+    
     # arr.find {|a| a > 5}
   end
 
@@ -30,10 +35,14 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     @question = Question.new
+    @all_topics = Hash[Question.all.map {|question| [question.topic, question.topic]}]
+    @all_topics["new topic"]= "new topic"
   end
 
   # GET /questions/1/edit
   def edit
+    @all_topics = Hash[Question.all.map {|question| [question.topic, question.topic]}]
+    @all_topics["new topic"]= "new topic"
     #javascript_include_tag('question.js')
   end
 
@@ -43,7 +52,11 @@ class QuestionsController < ApplicationController
     if params[:question][:qtype] == "True or False"
       @question = Question.new()
       @question.qtype = params[:question][:qtype]
-      @question.topic = params[:question][:topic]
+      if params[:question][:topic]!= "new topic"
+        @question.topic = params[:question][:topic]
+      else
+        @question.topic = params[:question][:newtopic]
+      end
       @question.content = params[:question][:content]
       @question.option1 = 'True'
       @question.option2 = 'False'
@@ -89,6 +102,8 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
+    puts "#{params}"
+    puts "#{question_params}"
     if params[:question][:feedback] != nil
       params[:question][:feedback] = params[:question][:feedback]
     end
@@ -99,7 +114,9 @@ class QuestionsController < ApplicationController
     end
     if params[:question][:remove_question_image] == "1"
       @question.remove_image = true
-      if params[:question][:topic] != nil
+      if params[:question][:topic] == "new topic"
+        params[:question][:topic] = params[:question][:newtopic]
+      else
         params[:question][:topic] = params[:question][:topic]
       end
       if params[:question][:qtype] == "True or False"
@@ -110,8 +127,13 @@ class QuestionsController < ApplicationController
       end
       @question.update(question_params)
     else
-      if params[:question][:topic] != nil
+      if params[:question][:topic] == "new topic"
+        params[:question][:topic] = params[:question][:newtopic]
+        puts 'we do execute the logic!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+        # params[:question].delete(:newtopic)
+      else
         params[:question][:topic] = params[:question][:topic]
+      
       end
       if params[:question][:qtype] == "True or False"
         params[:question][:option1] = 'True'

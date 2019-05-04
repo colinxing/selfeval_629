@@ -8,8 +8,8 @@
   <% if @question.image_url.present? %>
     <strong>Image:</strong>
     <br>
-    <br>
-    <%= image_tag(@question.image_url(:thumb).to_s, :align=>"left") %>
+    <p><%= @question.image_url  %></p>
+    <%= image_tag(@question.image_url.to_s[19..@question.image_url.length], :align=>"left") %>
     <% 20.times do %>
       <br>
     <% end %>

@@ -44,7 +44,7 @@
           %br
           %br
           - if question.image_url.present?
-            = image_tag(question.image_url(:thumb).to_s, :align=>"left") 
+            = image_tag(question.image_url.to_s[19..question.image_url.length], :align=>"left") 
             - 22.times do
               %br
           %br

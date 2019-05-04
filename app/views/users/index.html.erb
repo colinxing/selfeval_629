@@ -43,4 +43,13 @@
       </table>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-3">
+      <button class="btn btn-success"><%= link_to "Download Database", download_user_path(1) %></button></br>
+      <!--%= form_for :document, :html =>{:multipart => true} do |f| %>
+        <!--%= f.file_field :file %>
+        <!--%= f.submit "Upload Databse", :class => 'btn btn-danger' %>
+      <!--% end %>
+    </div>
+  </div>
 </div>

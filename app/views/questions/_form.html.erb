@@ -2,6 +2,7 @@
 $(document).ready(function initfunction()
 {
   var elem = document.getElementById("question_qtype");
+  var elem1 = document.getElementById("question_topic");
   //console.log('hi')
   //console.log(elem.value)
   var hiddenDiv1 = document.getElementById("opt1");
@@ -12,6 +13,9 @@ $(document).ready(function initfunction()
   hiddenDiv3.style.display = (elem.value == "True or False") ? "none":"block";
   var hiddenDiv4 = document.getElementById("opt4");
   hiddenDiv4.style.display = (elem.value == "True or False") ? "none":"block";
+  var hiddenDiv6 = document.getElementById("newtopic");
+  hiddenDiv6.style.display = (elem1.value == "new topic") ? "block":"none";
+  // alert(elem1.value);
   var r1 = document.getElementsByClassName("radiobutton");
   for (var i = 2, length = r1.length; i < 4; i++)
   {
@@ -45,6 +49,7 @@ $(document).ready(function initfunction()
   
   console.log(document.getElementById("question_image"));
 })
+
 </script>
 
 <%= form_with(model: question, local: true) do |form| %>
@@ -73,18 +78,27 @@ $(document).ready(function initfunction()
   <% if current_user.admin? %>
     <div class="actions" >
       <%= form.label :display, 'Approved' %>
-      <%= form.select :display, options_for_select({"Yes" => "Yes", "No" => "No"}, :selected => "No"), {:onchange => "if (this.selectedIndex) myFunction();", :onload => "initfunction();"}, id: :question_display %>
+      <%= form.select :display, options_for_select({"Yes" => "Yes", "No" => "No"}, :selected => "Yes"), {:onchange => "if (this.selectedIndex) myFunction();", :onload => "initfunction();"}, id: :question_display %>
     </div>
   <% end %>
 
-  <%= javascript_include_tag('question.js') %>
-  
-  <p><b> Note </b>: Mathematical equations written in LaTeX must be delimitted by \(...\)</p>
+  <script type="text/javascript">
+  // function myFunction1(){
+  //   // alert("hhh");
+  //   var elem1 = document.getElementById("question_topic");
+  //   var hiddenDiv6 = document.getElementById("newtopic");
+  //   hiddenDiv6.style.display = (elem1.value == "new topic") ? "block":"none";
+  // }
+  </script>
   
   <div class="topic">
     <%= form.label :topic %>
-    <%= form.select :topic, options_for_select({"General" => "General", "Math" => "Math", "Dynamic Programming" => "Dynamic Programming"}, :selected => "General"), {:onchange => "if (this.selectedIndex) myFunction();", :onload => "initfunction();"}, id: :question_topic %>
-
+    <%= form.select :topic, options_for_select(@all_topics, :selected => @question.topic), {:onchange => "if (this.selectedIndex) myFunction1();", :onload => "initfunction();"}, id: :question_topic %>
+  </div>
+  
+  <div  id="newtopic" style="display:block" class="field">
+    <%= form.label :newtopic  %>
+    <%= form.text_area :newtopic, size: "20x4"%>
   </div>
   
   <div class="field">
@@ -152,4 +166,6 @@ $(document).ready(function initfunction()
   <div class="actions">
     <%= form.submit %>
   </div>
+  
 <% end %>
+<%= javascript_include_tag('question.js') %>

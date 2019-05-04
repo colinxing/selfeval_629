@@ -58,6 +58,10 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver', '2.53.4'
   gem 'rspec-rails'
+  # Use yaml_cb to download database
+  gem 'yaml_db'
+  # Use carrierwave to upload file
+  # gem 'carrierwave'
 end
 
 group :development do

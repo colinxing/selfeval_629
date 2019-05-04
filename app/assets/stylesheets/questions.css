@@ -19,9 +19,11 @@
 }
 
 #option4{
+    display:block;
+}
+#newtopic{
     display:none;
 }
-
 #question_type{
     width:30px;   
 }

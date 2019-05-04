@@ -1,9 +1,12 @@
+require 'rake'
+
+load 'lib/tasks/my_namespace.rake'
 class UsersController < ApplicationController
 
   before_action :authenticate_user!
   before_action :admin_only, :except => :show
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :download]
 
   # GET /users
   # GET /users.json
@@ -36,6 +39,13 @@ class UsersController < ApplicationController
     user.destroy
     redirect_to users_path, :notice => "User deleted."
   end
+  
+  def download
+    # Rails.root + "lib/tasks/my_namespace.rake"
+    `rake db:dump`
+    send_file "db/data.yml"
+    # redirect_to users_path
+  end
 
   private
 
@@ -44,13 +54,14 @@ class UsersController < ApplicationController
       redirect_to root_path, :alert => "Access denied."
     end
   end
-
-    def set_user
+  
+  def set_user
       @user = User.find(params[:id])
-    end
+  end
+  
   def secure_params
     params.require(:user).permit(:role)
   end
-
+  
 end
 

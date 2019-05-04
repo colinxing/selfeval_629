@@ -486,6 +486,9 @@ GEM
     xml-simple (1.1.5)
     xpath (3.0.0)
       nokogiri (~> 1.8)
+    yaml_db (0.7.0)
+      rails (>= 3.0)
+      rake (>= 0.8.7)
 
 PLATFORMS
   ruby
@@ -533,6 +536,7 @@ DEPENDENCIES
   uglifier (= 3.2.0)
   unicorn
   web-console (~> 2.0)
+  yaml_db
 
 BUNDLED WITH
-   1.16.1
+   1.16.6
