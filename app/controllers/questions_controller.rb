@@ -118,19 +118,19 @@ class QuestionsController < ApplicationController
       params[:question][:display] = false
     end
     if params[:question][:remove_question_image] == "1"
-      # @question.remove_image = true
-      # if params[:question][:topic] == "new topic"
-      #   params[:question][:topic] = params[:question][:newtopic]
-      # else
-      #   params[:question][:topic] = params[:question][:topic]
-      # end
-      # if params[:question][:qtype] == "True or False"
-      #   params[:question][:option1] = 'True'
-      #   params[:question][:option2] = 'False'
-      #   params[:question][:option3] = 'nil'
-      #   params[:question][:option4] = 'nil'
-      # end
-      # @question.update(question_params)
+      @question.remove_image = true
+      if params[:question][:topic] == "new topic"
+        params[:question][:topic] = params[:question][:newtopic]
+      else
+        params[:question][:topic] = params[:question][:topic]
+      end
+      if params[:question][:qtype] == "True or False"
+        params[:question][:option1] = 'True'
+        params[:question][:option2] = 'False'
+        params[:question][:option3] = 'nil'
+        params[:question][:option4] = 'nil'
+      end
+      @question.update(question_params)
     else
       if params[:question][:topic] == "new topic"
         params[:question][:topic] = params[:question][:newtopic]
